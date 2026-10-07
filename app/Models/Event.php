@@ -6,6 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Event extends Model
 {
+    public function getImageUrlAttribute(): ?string
+    {
+        if (!$this->image) return null;
+        return str_starts_with($this->image, 'db:')
+            ? route('event-images.show', substr($this->image, 3))
+            : asset('storage/'.$this->image);
+    }
 
   protected $fillable = [
         'title',
@@ -50,4 +57,5 @@ public function users()
 }
 
 }
+
 
