@@ -49,6 +49,7 @@ class RegistrationController extends Controller
 
             return back()->with('success', 'Booking confirmed.');
         } catch (\Exception $e) {
+            \Illuminate\Support\Facades\Log::error('Booking failed', ['reason' => $e->getMessage()]);
             return back()->with('error', $e->getMessage() === 'No places left.'
                 ? 'No places left for this event.'
                 : 'Booking failed.');
