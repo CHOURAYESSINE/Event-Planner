@@ -35,6 +35,7 @@ function closeBookModal(){ document.getElementById('bookModal').classList.add('h
             <div class="flex items-center gap-6 text-sm">
         
 
+                @auth
                 <div x-data="{ open: false }" class="relative">
 
             <!-- Profile Button -->
@@ -106,6 +107,10 @@ function closeBookModal(){ document.getElementById('bookModal').classList.add('h
                 </div>
             </div>
         </div>
+        @else
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Signup</a>
+        @endauth
         </div>
     </div>
 </header>
@@ -355,4 +360,5 @@ function closeBookModal(){ document.getElementById('bookModal').classList.add('h
 
 
 </html>
+
 
