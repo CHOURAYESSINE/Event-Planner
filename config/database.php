@@ -97,7 +97,7 @@ return [
             'search_path' => 'public',
             'sslmode' => env('DB_SSLMODE', 'prefer'),
             // PgBouncer with older PDO drivers must not deallocate named statements.
-            'options' => env('VERCEL') ? [PDO::ATTR_EMULATE_PREPARES => true] : [],
+            'options' => env('VERCEL') ? [PDO::PGSQL_ATTR_DISABLE_PREPARES => true] : [],
         ],
 
         'sqlsrv' => [
@@ -183,6 +183,7 @@ return [
     ],
 
 ];
+
 
 
 
