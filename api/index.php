@@ -14,6 +14,14 @@ if (getenv('VERCEL')) {
     putenv('LARAVEL_STORAGE_PATH='.$runtimeStorage);
     putenv('VIEW_COMPILED_PATH='.$runtimeStorage.'/framework/views');
     putenv('LOG_CHANNEL=stderr');
+    foreach (['APP_ENV' => 'production', 'APP_DEBUG' => 'false', 'SESSION_DRIVER' => 'cookie', 'SESSION_SECURE_COOKIE' => 'true', 'CACHE_STORE' => 'array', 'QUEUE_CONNECTION' => 'sync'] as $name => $value) {
+        if (getenv($name) === false) {
+            putenv($name.'='.$value);
+        }
+    }
+    if (getenv('APP_URL') === false && getenv('VERCEL_PROJECT_PRODUCTION_URL')) {
+        putenv('APP_URL=https://'.getenv('VERCEL_PROJECT_PRODUCTION_URL'));
+    }
 }
 
 define('LARAVEL_START', microtime(true));
@@ -24,3 +32,4 @@ if (getenv('VERCEL')) {
     $app->useStoragePath($runtimeStorage);
 }
 $app->handleRequest(Request::capture());
+
