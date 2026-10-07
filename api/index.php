@@ -30,6 +30,9 @@ $app = require __DIR__.'/../bootstrap/app.php';
 $app->usePublicPath(dirname(__DIR__).'/public');
 if (getenv('VERCEL')) {
     $app->useStoragePath($runtimeStorage);
+    $_SERVER['HTTPS'] = 'on';
+    $_SERVER['SERVER_PORT'] = '443';
 }
 $app->handleRequest(Request::capture());
+
 
