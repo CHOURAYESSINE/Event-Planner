@@ -12,6 +12,7 @@ Ce projet utilise le runtime communautaire vercel-php 0.7.4 (PHP 8.3).
 
 Le fichier SQLite local est exclu du déploiement. Les événements et utilisateurs locaux ne sont pas transférés.
 
-Limite actuelle : les images téléchargées par l'administration utilisent le disque public local. Sur Vercel, il faut adapter ces téléchargements à un stockage externe (S3 ou équivalent) avant d'utiliser cette fonction. Les images déjà présentes dans public/images restent disponibles.
+Les images envoyées sont conservées dans la table event_images de Neon et servies par /event-images/{id}. Les fichiers sont limités à 2 Mo.
 
 La préparation locale ne confirme pas un déploiement : il faut un compte Vercel connecté, les variables et une base hébergée.
+
