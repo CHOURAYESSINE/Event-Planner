@@ -248,7 +248,7 @@ Requirements:
             <div class="w-full rounded-xl bg-gray-100 border border-gray-200 overflow-hidden">
                 @php
                     // If you store image as "events/xxx.jpg" in public disk, use Storage::url in controller or directly:
-                    $imageUrl = $event->image ? asset('storage/'.$event->image) : null;
+                    $imageUrl = $event->image ? $event->image_url : null;
                 @endphp
 
                 <div class="h-48 flex items-center justify-center">
@@ -336,3 +336,4 @@ Requirements:
 
 </body>
 </html>
+

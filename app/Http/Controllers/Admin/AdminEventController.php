@@ -50,7 +50,7 @@ class AdminEventController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('events', 'public');
+            $imagePath = app(\App\Services\EventImageStorage::class)->store($request->file('image'));
         }
 
         Event::create([
@@ -105,9 +105,9 @@ public function update(Request $request, Event $event)
     if ($request->hasFile('image')) {
         // delete old image if exists
         if ($event->image) {
-            Storage::disk('public')->delete($event->image);
+            app(\App\Services\EventImageStorage::class)->delete($event->image);
         }
-        $validated['image'] = $request->file('image')->store('events', 'public');
+        $validated['image'] = app(\App\Services\EventImageStorage::class)->store($request->file('image'));
     }
 
     $event->update($validated);
@@ -122,3 +122,4 @@ public function archive(Event $event)
     return redirect()->route('admin.events.index')->with('success', 'Event archived successfully.');
 }
 }
+

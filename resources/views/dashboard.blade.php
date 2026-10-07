@@ -162,7 +162,7 @@
             <div class="bg-white rounded-xl shadow-sm overflow-hidden border border-gray-100">
                 <div class="relative">
                     <img
-                        src="{{ $event->image ? asset('storage/'.$event->image) : asset('images/home/event-placeholder.jpg') }}"
+                        src="{{ $event->image ? $event->image_url : asset('images/home/event-placeholder.jpg') }}"
                         class="w-full h-40 object-cover"
                         alt="event"
                     >
@@ -235,3 +235,4 @@
 
 </body>
 </html>
+

@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\AdminCategoryController;
 use App\Http\Controllers\Admin\AdminRegistrationController;
 use App\Http\Controllers\RegistrationController;
 
+Route::get('/event-images/{id}', [\App\Http\Controllers\EventImageController::class, 'show'])->whereUuid('id')->name('event-images.show');
+
 // PUBLIC homepage
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/events/load-more', [HomeController::class, 'loadMore'])->name('events.loadMore');
@@ -64,3 +66,4 @@ Route::prefix('admin')
     });
 
 require __DIR__.'/auth.php';
+

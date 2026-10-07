@@ -115,7 +115,7 @@ function closeBookModal(){ document.getElementById('bookModal').classList.add('h
     {{-- HERO SECTION --}}
     @php
         $hero = $event->image
-            ? asset('storage/'.$event->image)
+            ? $event->image_url
             : 'https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=1600&q=80';
     @endphp
 
@@ -355,3 +355,4 @@ function closeBookModal(){ document.getElementById('bookModal').classList.add('h
 
 
 </html>
+
